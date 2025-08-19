@@ -32,7 +32,12 @@ function Brainstorm.key_press_update(key)
 	if key == Brainstorm.SETTINGS.keybinds.rerollSeed and love.keyboard.isDown("lctrl") then
 		FastReroll()
 	end
-	if key == Brainstorm.SETTINGS.keybinds.autoReroll and love.keyboard.isDown("lctrl") then
-		Brainstorm.AUTOREROLL.autoRerollActive = not Brainstorm.AUTOREROLL.autoRerollActive
-	end
+        if key == Brainstorm.SETTINGS.keybinds.autoReroll and love.keyboard.isDown("lctrl") then
+                Brainstorm.AUTOREROLL.autoRerollActive = not Brainstorm.AUTOREROLL.autoRerollActive
+                Brainstorm.AUTOREROLL.autoRerollFrames = 0
+                if not Brainstorm.AUTOREROLL.autoRerollActive and Brainstorm.AUTOREROLL.rerollText then
+                        Brainstorm.remove_attention_text(Brainstorm.AUTOREROLL.rerollText)
+                        Brainstorm.AUTOREROLL.rerollText = nil
+                end
+        end
 end
